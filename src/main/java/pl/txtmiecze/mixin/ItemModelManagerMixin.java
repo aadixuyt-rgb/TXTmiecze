@@ -1,6 +1,6 @@
 package pl.txtmiecze.mixin;
 
-import net.minecraft.client.render.item.ItemModelManager;
+import net.minecraft.client.item.ItemModelManager;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
