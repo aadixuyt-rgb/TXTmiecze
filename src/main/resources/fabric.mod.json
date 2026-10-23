@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "txtmiecze",
+  "version": "${version}",
+  "name": "TXTmiecze",
+  "description": "Zmienia wygląd żelaznego miecza na jeden z 10 materiałów, bez zmiany nazwy. Po stronie klienta, GUI pod klawiszem M.",
+  "authors": ["snupxb"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": { "client": ["pl.txtmiecze.TxtMieczeMod"] },
+  "mixins": ["txtmiecze.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
