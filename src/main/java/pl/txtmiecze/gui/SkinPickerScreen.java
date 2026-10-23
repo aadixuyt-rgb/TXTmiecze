@@ -54,13 +54,24 @@ public class SkinPickerScreen extends Screen {
                     this.client.setScreen(new SkinPickerScreen(parent));
                 }).dimensions(startX, noneY, totalW - gap, 20).build());
 
+        addDrawableChild(ButtonWidget.builder(poseText(), b -> {
+            Config.d.swordPose = !Config.d.swordPose;
+            Config.save();
+            b.setMessage(poseText());
+        }).dimensions(startX, noneY + 24, totalW - gap, 20).build());
+
         addDrawableChild(ButtonWidget.builder(Text.literal("Zamknij").formatted(Formatting.GRAY), b -> close())
-                .dimensions(startX, noneY + 28, totalW - gap, 20).build());
+                .dimensions(startX, noneY + 52, totalW - gap, 20).build());
+    }
+
+    private Text poseText() {
+        return Text.literal("Trzymanie: ").append(Text.literal(Config.d.swordPose ? "jak miecz (w górę)" : "płasko (jak item)")
+                .formatted(Config.d.swordPose ? Formatting.AQUA : Formatting.GOLD));
     }
 
     @Override
     public void render(DrawContext ctx, int mouseX, int mouseY, float delta) {
-        int panelW = 420, panelH = 290;
+        int panelW = 420, panelH = 330;
         int px = this.width / 2 - panelW / 2, py = this.height / 2 - panelH / 2;
         UiFx.drawPanel(ctx, px, py, panelW, panelH);
 

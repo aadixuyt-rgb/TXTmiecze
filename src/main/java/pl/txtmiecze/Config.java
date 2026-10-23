@@ -14,6 +14,8 @@ public final class Config {
         public String activeSkin = null;
         /** klawisz otwierajacy GUI, kod GLFW zapisany jako int (domyslnie KEY_M) */
         public int keyCode = 77; // GLFW_KEY_M
+        /** true = trzymanie jak miecz (trzon w gore), false = plasko jak zwykly item */
+        public boolean swordPose = true;
     }
 
     public static Data d = new Data();
