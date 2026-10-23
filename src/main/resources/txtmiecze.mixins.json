@@ -3,10 +3,12 @@
   "minVersion": "0.8",
   "package": "pl.txtmiecze.mixin",
   "compatibilityLevel": "JAVA_21",
+  "mixins": [],
   "client": [
     "ItemModelManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "refmap": "txtmiecze-refmap.json"
 }
