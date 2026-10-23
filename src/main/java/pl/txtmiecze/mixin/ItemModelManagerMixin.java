@@ -26,6 +26,9 @@ public class ItemModelManagerMixin {
     @ModifyVariable(method = UPDATE, at = @At("HEAD"), argsOnly = true)
     private ItemStack txtmiecze$skin(ItemStack stack) {
         if (stack == null || stack.isEmpty() || !stack.isOf(Items.IRON_SWORD)) return stack;
+        // tak jak w easysnup: jesli przedmiot ma wlasna (nadana np. na kowadle) nazwe,
+        // nie ruszamy go - skorka dziala tylko na "zwykly" zelazny miecz bez customowej nazwy
+        if (stack.contains(DataComponentTypes.CUSTOM_NAME)) return stack;
         Skin skin = Config.activeSkin();
         if (skin == null) return stack;
 
