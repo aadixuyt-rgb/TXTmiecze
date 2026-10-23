@@ -5,7 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [],
   "client": [
-    "ItemModelManagerMixin"
+    "ItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
