@@ -9,9 +9,9 @@ package pl.txtmiecze;
 public enum Skin {
     DIAMOND("diamond", "diamond", "Jasny niebieski", 0x55DFFF),
     RABBIT_HIDE("rabbit_hide", "rabbit_hide", "Brązowy", 0xA06A3C),
-    AMETHYST_SHARD("amethyst_shard", "amethyst_shard", "Fioletowy", 0x9B59D9),
+    AMETHYST_SHARD("amethyst_shard", "amethyst_shard", "Fioletowy", 0x8555E6),
     GLOWSTONE_DUST("glowstone_dust", "glowstone_dust", "Żółty", 0xFFE34D),
-    GLOW_INK_SAC("glow_ink_sac", "glow_ink_sac", "Ciemny niebieski", 0x1A3F7A),
+    GLOW_INK_SAC("glow_ink_sac", "glow_ink_sac", "Ciemny niebieski", 0x130491),
     SLIME_BALL("slime_ball", "slime_ball", "Ciemny zielony", 0x2E7D32),
     WHEAT("wheat", "wheat", "Pomarańczowy", 0xFF7F5F),
     TURTLE_SCUTE("turtle_scute", "turtle_scute", "Jasny zielony", 0x53F163),
