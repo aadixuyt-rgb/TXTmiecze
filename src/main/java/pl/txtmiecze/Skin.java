@@ -13,8 +13,8 @@ public enum Skin {
     GLOWSTONE_DUST("glowstone_dust", "glowstone_dust", "Żółty", 0xFFE34D),
     GLOW_INK_SAC("glow_ink_sac", "glow_ink_sac", "Ciemny niebieski", 0x1A3F7A),
     SLIME_BALL("slime_ball", "slime_ball", "Ciemny zielony", 0x2E7D32),
-    WHEAT("wheat", "wheat", "Pomarańczowy", 0xE07B20),
-    TURTLE_SCUTE("turtle_scute", "turtle_scute", "Jasny zielony", 0x6FDD6F),
+    WHEAT("wheat", "wheat", "Pomarańczowy", 0xFF7F5F),
+    TURTLE_SCUTE("turtle_scute", "turtle_scute", "Jasny zielony", 0x53F163),
     FERMENTED_SPIDER_EYE("fermented_spider_eye", "fermented_spider_eye", "Czerwony", 0xB22222),
     FLINT("flint", "flint", "Czarny", 0x2B2B2B);
 
