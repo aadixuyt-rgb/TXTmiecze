@@ -7,11 +7,13 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Config {
     public static final class Data {
-        /** id aktywnej skorki (Skin.id) albo null = brak zmiany wygladu */
-        public String activeSkin = null;
+        /** lista regul: nazwa miecza (na kowadle) -> skorka */
+        public List<Rule> rules = new ArrayList<>();
         /** klawisz otwierajacy GUI, kod GLFW zapisany jako int (domyslnie KEY_M) */
         public int keyCode = 77; // GLFW_KEY_M
         /** true = trzymanie jak miecz (trzon w gore), false = plasko jak zwykly item */
@@ -36,6 +38,7 @@ public final class Config {
             }
         } catch (Exception ignored) {
         }
+        if (d.rules == null) d.rules = new ArrayList<>();
         save();
     }
 
@@ -44,14 +47,5 @@ public final class Config {
             Files.writeString(path(), GSON.toJson(d));
         } catch (IOException ignored) {
         }
-    }
-
-    public static Skin activeSkin() {
-        return Skin.byId(d.activeSkin);
-    }
-
-    public static void setActiveSkin(Skin s) {
-        d.activeSkin = s == null ? null : s.id;
-        save();
     }
 }
