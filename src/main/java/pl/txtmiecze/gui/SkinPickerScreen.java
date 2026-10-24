@@ -13,6 +13,9 @@ import pl.txtmiecze.Config;
 import pl.txtmiecze.Rule;
 import pl.txtmiecze.Skin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * GUI pod klawiszem M. Działa na mieczu AKTUALNIE trzymanym w ręce (musi mieć
  * własną nazwę, nadaną np. na kowadle): kliknięcie koloru przypisuje/PODMIENIA
@@ -49,9 +52,10 @@ public class SkinPickerScreen extends Screen {
         for (int i = 0; i < skins.length; i++) {
             Skin s = skins[i];
             int y = startY + i * (bh + gap);
-            Rule current = ruleForSkin(s);
-            boolean assigned = current != null;
-            String suffix = assigned ? "  -  " + current.name : "";
+            List<Rule> current = rulesForSkin(s);
+            boolean assigned = !current.isEmpty();
+            String names = assigned ? current.stream().map(r -> r.name).reduce((a, b2) -> a + ", " + b2).orElse("") : "";
+            String suffix = assigned ? "  -  " + names : "";
             Text label = Text.literal(s.label + suffix).formatted(assigned ? Formatting.AQUA : Formatting.WHITE);
 
             addDrawableChild(ButtonWidget.builder(label, b -> {
@@ -61,10 +65,10 @@ public class SkinPickerScreen extends Screen {
             }).dimensions(startX, y, bw, bh).build());
 
             addDrawableChild(ButtonWidget.builder(Text.literal("✕").formatted(Formatting.RED), b -> {
-                if (current != null) {
-                    Config.d.rules.remove(current);
-                    Config.save();
-                }
+                // usuwa WSZYSTKIE reguly uzywajace tego koloru (moze ich byc wiele -
+                // kilka roznie nazwanych mieczy moglo dostac ten sam kolor)
+                Config.d.rules.removeIf(r -> s.id.equals(r.skin));
+                Config.save();
                 this.client.setScreen(new SkinPickerScreen(parent));
             }).dimensions(startX + bw + 6, y, 24, bh).build());
         }
@@ -80,11 +84,12 @@ public class SkinPickerScreen extends Screen {
                 .dimensions(startX, bottomY + 26, bw + 30, 20).build());
     }
 
-    private Rule ruleForSkin(Skin s) {
+    private List<Rule> rulesForSkin(Skin s) {
+        List<Rule> list = new ArrayList<>();
         for (Rule r : Config.d.rules) {
-            if (s.id.equals(r.skin)) return r;
+            if (s.id.equals(r.skin)) list.add(r);
         }
-        return null;
+        return list;
     }
 
     private void assignHeldSwordTo(Skin skin) {
